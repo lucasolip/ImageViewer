@@ -1,6 +1,7 @@
-package view;
+package app.mock;
 
 import model.Image;
+import view.ImageDisplay;
 
 public class MockImageDisplay implements ImageDisplay {
 
