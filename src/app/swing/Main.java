@@ -1,6 +1,7 @@
 package app.swing;
 
 import control.Command;
+import control.ImagePresenter;
 import control.NextCommand;
 import control.PrevCommand;
 import java.awt.BorderLayout;
@@ -26,6 +27,7 @@ public class Main extends JFrame {
     private List<Image> images;
     private ImageDisplay imageDisplay;
     private Map<String, Command> commands = new HashMap<>();
+    private ImagePresenter imagePresenter;
 
     public Main() {
         this.setTitle("Image Viewer");
@@ -33,14 +35,16 @@ public class Main extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.getContentPane().add(imagePanel());
-        this.add(toolbar(), BorderLayout.SOUTH);
+        
+        //this.add(toolbar(), BorderLayout.SOUTH);
     }
     
     private void execute() {
         this.images = new FileImageLoader(new File("images")).load();
         this.imageDisplay.show(images.get(0));
-        commands.put("<", new NextCommand(images, imageDisplay));
-        commands.put(">", new PrevCommand(images, imageDisplay));
+        imagePresenter = new ImagePresenter(images, imageDisplay);
+        //commands.put("<", new NextCommand(images, imageDisplay));
+        //commands.put(">", new PrevCommand(images, imageDisplay));
         this.setVisible(true);
     }
 

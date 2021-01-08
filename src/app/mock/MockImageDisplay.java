@@ -17,5 +17,9 @@ public class MockImageDisplay implements ImageDisplay {
     public Image image() {
         return image;
     }
+
+    @Override
+    public void on(Shift shift) {
+    }
     
 }
